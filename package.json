@@ -1,0 +1,31 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "debug": "nodemon server.js",
+    "frontend": "cd frontend && yarn start",
+    "frontend:build" :"cd frontend && yarn build"
+  },
+  "keywords": [],
+  "author": "Vivers",
+  "license": "MIT",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "imgur": "^1.0.2",
+    "js-cookie": "^2.2.1",
+    "mongoose": "^5.12.3",
+    "passport": "^0.4.1",
+    "passport-discord": "^0.1.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
