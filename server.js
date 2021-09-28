@@ -242,7 +242,9 @@ app.get('/api/topic/:id', async (req, res) => {
     const comment = await Comment.find({ topicID: id }).lean()
     for (let i = 0; i < comment.length; i++) {
       let user = await User.findOne({ userID: comment[i].userID })
-      comment[i].user = user
+      if (user) {
+        comment[i].user = user
+      }
     }
     return res.json({topic, comment});
   }

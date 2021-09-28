@@ -119,3 +119,5 @@ dist
 
 frontend/*
 !/frontend/build/
+
+todo.txt
