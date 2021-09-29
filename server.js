@@ -206,7 +206,7 @@ app.get('/api/forum/themes/:id', async (req, ress) => {
 app.post('/forum/topic/create', async (req, res) => {
   const resp = req.body
   if (resp && resp.name && resp.content && resp.ownerID && resp.procreator) {
-    const lastCommit = await Topic.findOne({}).sort({_id: -1});
+    const lastCommit = await Topic.findOne({}).sort({topicID: -1});
     if (lastCommit) {
       const topic = new Topic({
         topicID: lastCommit.topicID + 1,
@@ -277,10 +277,9 @@ app.post('/topic/message/add', async (req, res) => {
 });
 app.get('/api/topic/close/:id', async (req, res) => {
   const { id } = req.params
-  const topic = await Topic.findOneAndUpdate({ topicID: id });
+  const topic = await Topic.findOne({ topicID: id });
   if (topic) {
-    topic.isClosed = true;
-    topic.save().then(() => res.status(200).json({}))
+    return Topic.findOneAndUpdate({ topicID: id }, { isClosed: true }).then(() => res.status(200).json({}))
   }
   return res.status(400).json({});
 })
